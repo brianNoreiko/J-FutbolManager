@@ -1,19 +1,26 @@
+package models;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Persona {
+public abstract class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull
-    @Column(name = "nombreJug")
+    @Column(name = "nombre")
     private String name;
-
-    private
+    @NotNull
+    @Column(name = "apellido")
+    private String lastname;
 
 }
