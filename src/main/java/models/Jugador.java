@@ -4,8 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.sql.Time;
-import java.util.Calendar;
+import java.util.Date;
 
 
 @Data
@@ -13,24 +12,35 @@ import java.util.Calendar;
 @Entity(name = "jugadores")
 
 
-public class Jugador extends Persona{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
+public class Jugador extends Persona {
+    @Override
+    public TypePersona typePersona() {
+        return TypePersona.JUGADOR;
+    }
     @NotNull
-    @Column(name = "peso")
+    @Column
     private Integer peso;
     @NotNull
-    @Column(name = "altura")
+    @Column
     private Integer altura;
-    @Column(name = "goles")
+    @Column
     private Integer goles;
-    @Column(name = "minJugador")
-    private Time minutoJugador;
+    @Column
+    private Integer minutoJugador;
+    @Column
+    private Date fechaDeNacimiento;
+    @ManyToOne(cascade = CascadeType.ALL)
     private Currency currency;
-    @NotNull
-    @Column(name = "fechaNac")
-    private Calendar fechaDeNacimiento;
+
+
+    public float getPesoValue(){
+        return getCurrencyValue() * currency.getTypeCurrency().getPesoValue();
+    }
+
+    public float getCurrencyValue(){
+        return this.currency.getMonto();
+    }
+
 }
+
+

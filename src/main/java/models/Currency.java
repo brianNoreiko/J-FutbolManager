@@ -3,18 +3,21 @@ package models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
 
-@Entity(name = "currencies")
+@Entity(name = "currency")
+
+
 
 public class Currency {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String currency;
+    private TypeCurrency typeCurrency;
     @NotNull
-    @Column(name = "monto")
-    private Integer monto;
+    @NotEmpty(message = "Monto cannot be negative")
+    private float monto;
 }

@@ -1,9 +1,9 @@
 package Repository;
 
-import models.Representante;
+import models.Cumpleanito;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RepresentanteRepository extends JpaRepository<Representante,Integer> {
+public interface CumpleanitoRepository extends JpaRepository<Cumpleanito, Integer> {
 }

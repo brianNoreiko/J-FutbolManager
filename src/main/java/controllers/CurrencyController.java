@@ -15,7 +15,7 @@ public class CurrencyController {
     @Autowired
     CurrencyService currencyService;
 
-    @GetMapping
+    @PostMapping
     public void addCurrency(@RequestBody Currency currency){currencyService.add(currency);}
 
     @GetMapping
@@ -24,6 +24,6 @@ public class CurrencyController {
     @GetMapping("/{id}")
     public Currency getCurrencyById(@PathVariable Integer id){return currencyService.getCurrencyById(id);}
 
-    @GetMapping
+    @DeleteMapping
     public void deleteCurrencyById(@PathVariable Integer id){currencyService.removeCurrency(id);}
 }

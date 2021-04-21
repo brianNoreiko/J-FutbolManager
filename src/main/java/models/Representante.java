@@ -10,14 +10,28 @@ import java.util.List;
 
 public class Representante extends Persona {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Override
+    public TypePersona typePersona(){ return TypePersona.REPRESENTANTE; }
 
-    @OneToMany(fetch = FetchType.EAGER)
+
+    @OneToMany
     @JoinColumn(name = "jugador_id")
     private List<Jugador> jugadoresList;
-    private Integer pesoDeLaBoveda;
-    private Integer montoTotal;
+    private double pesoDeLaBoveda;
+    private float montoTotal;
+    @OneToMany
+    @JoinColumn(name= "persona_id")
+    private List<Persona> amigoList;
+
+    public float getMontoTotal(){
+        return jugadoresList.stream().map(Jugador::getPesoValue).reduce((float) 0,Float::sum);
+    }
+
+    public float getPesoBoveda(){
+
+        return jugadoresList.stream().map(Jugador::getCurrency).map(Currency::getMonto).
+                reduce(0f, (total, element) -> total + (element/100) * 0.1f);
+    }
+
 
 }

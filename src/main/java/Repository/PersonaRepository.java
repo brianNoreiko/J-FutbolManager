@@ -1,10 +1,10 @@
 package Repository;
 
-import models.Jugador;
+import models.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 
-public interface JugadorRepository extends JpaRepository<Jugador,Integer> {
+public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 }
