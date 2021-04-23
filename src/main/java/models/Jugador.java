@@ -34,7 +34,7 @@ public class Jugador extends Persona {
 
 
     public float getPesoValue(){
-        return getCurrencyValue() * currency.getTypeCurrency().getPesoValue();
+        return getCurrencyValue() * currency.getTypeCurrency().getCotizacion();
     }
 
     public float getCurrencyValue(){

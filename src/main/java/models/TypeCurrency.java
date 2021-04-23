@@ -1,15 +1,15 @@
 package models;
 
 public enum TypeCurrency{
-    EUR("euros", 111f),
-    USD("dolares", 92.67f);
+    EUR("euros", 145.22f),
+    USD("dolares", 138.53f);
 
     private String description;
-    private float valorPeso;
+    private float cotizacion;
 
-    TypeCurrency(String description, float pesoValue) {
+    TypeCurrency(String description, float cotizacion) {
         this.description = description;
-        this.valorPeso = pesoValue;
+        this.cotizacion = cotizacion;
     }
 
     public static TypeCurrency find(String value){
@@ -24,7 +24,5 @@ public enum TypeCurrency{
         return description;
     }
 
-    public Float getPesoValue() {
-        return valorPeso;
-    }
+    public Float getCotizacion() { return cotizacion;}
 }
